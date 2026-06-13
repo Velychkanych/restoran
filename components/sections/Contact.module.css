@@ -1,0 +1,61 @@
+.section {
+  background: var(--dark-2);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.glow {
+  position: absolute;
+  top: -50%;
+  left: -10%;
+  right: -10%;
+  bottom: -50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(95, 163, 184, 0.1) 0%,
+    transparent 60%
+  );
+  z-index: 0;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.lead {
+  font-size: 1.1rem;
+  color: var(--foam-dim);
+  margin-bottom: 3rem;
+}
+
+.phone {
+  font-family: var(--font-unbounded), sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  color: var(--foam);
+  display: inline-block;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.01em;
+  transition: color 0.25s;
+}
+
+.phone:hover {
+  color: var(--amber);
+}
+
+.name {
+  font-size: 0.9rem;
+  color: var(--foam-dim);
+  margin-bottom: 2.5rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,111 @@
+.ruler {
+  position: fixed;
+  right: 26px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 240px;
+  width: 40px;
+  z-index: 90;
+  pointer-events: none;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.75));
+}
+
+/* базова лінія (права грань лінійки) */
+.line {
+  position: absolute;
+  right: 6px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--line);
+}
+
+/* заповнена частина — copper-градієнт зверху до маркера */
+.fill {
+  position: absolute;
+  right: 6px;
+  top: 0;
+  width: 1px;
+  height: 0%;
+  background: linear-gradient(180deg, var(--amber), var(--copper));
+  transition: height 0.12s linear;
+}
+
+/* поділки, що відходять вліво від лінії */
+.tick {
+  position: absolute;
+  right: 7px;
+  width: 8px;
+  height: 1px;
+  background: rgba(242, 236, 224, 0.45);
+  transform: translateY(-0.5px);
+}
+
+.major {
+  width: 14px;
+  background: rgba(242, 236, 224, 0.7);
+}
+
+/* підписи 0 / 100 */
+.cap {
+  position: absolute;
+  right: 26px;
+  font-family: var(--font-unbounded), sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--foam-faint);
+}
+
+.capTop {
+  top: -5px;
+}
+
+.capBot {
+  bottom: -5px;
+}
+
+/* маркер — поточна позиція */
+.marker {
+  position: absolute;
+  right: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transform: translateY(-50%);
+  transition: top 0.12s linear;
+  white-space: nowrap;
+}
+
+.pct {
+  font-family: var(--font-unbounded), sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--amber);
+  line-height: 1;
+}
+
+/* трикутник-стрілка, що вказує на лінію */
+.arrow {
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 7px solid var(--copper);
+}
+
+@media (max-width: 768px) {
+  .ruler {
+    right: 14px;
+    height: 180px;
+  }
+  .cap {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fill,
+  .marker {
+    transition: none;
+  }
+}

@@ -1,0 +1,57 @@
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.5;
+  will-change: transform;
+}
+
+.b1 {
+  top: -10%;
+  left: -8%;
+  width: 46vw;
+  height: 46vw;
+  background: radial-gradient(
+    circle,
+    rgba(95, 163, 184, 0.42),
+    transparent 70%
+  );
+}
+
+.b2 {
+  top: 35%;
+  right: -12%;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(
+    circle,
+    rgba(198, 107, 61, 0.32),
+    transparent 70%
+  );
+}
+
+.b3 {
+  bottom: -12%;
+  left: 25%;
+  width: 38vw;
+  height: 38vw;
+  background: radial-gradient(
+    circle,
+    rgba(61, 125, 143, 0.34),
+    transparent 70%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob {
+    transform: none !important;
+  }
+}

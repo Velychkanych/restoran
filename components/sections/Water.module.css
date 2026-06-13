@@ -1,0 +1,93 @@
+.water {
+  background: #0b1418;
+  position: relative;
+  overflow: hidden;
+}
+
+.mesh {
+  position: absolute;
+  inset: -50%;
+  z-index: 0;
+  background: radial-gradient(
+      circle at 20% 30%,
+      rgba(95, 163, 184, 0.3) 0%,
+      transparent 45%
+    ),
+    radial-gradient(circle at 80% 70%, rgba(198, 107, 61, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(61, 125, 143, 0.32) 0%, transparent 60%);
+  animation: meshFloat 25s ease-in-out infinite;
+}
+
+@keyframes meshFloat {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(-5%, 5%) rotate(2deg);
+  }
+  66% {
+    transform: translate(5%, -3%) rotate(-1deg);
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.content :global(.eyebrow) {
+  color: var(--water);
+}
+
+.content :global(.eyebrow)::before {
+  background: var(--water);
+}
+
+.content :global(.sec-title em) {
+  color: var(--water);
+}
+
+.text p {
+  color: rgba(242, 236, 224, 0.78);
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+.callout {
+  border-left: 2px solid var(--water);
+  padding: 1.3rem 1.6rem;
+  margin-top: 2rem;
+  border-radius: 0 10px 10px 0;
+}
+
+.callout strong {
+  font-family: var(--font-unbounded), sans-serif;
+  font-weight: 400;
+  color: var(--foam);
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.callout span {
+  color: var(--foam-dim);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 900px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mesh {
+    animation: none;
+  }
+}
