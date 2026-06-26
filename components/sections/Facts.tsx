@@ -19,14 +19,6 @@ const ROWS: { label: string; value: ReactNode }[] = [
   { label: "Вода", value: "Ставок + лікувальне джерело" },
   { label: "Внутрішній стан", value: "Будівля з перегородками, під оздоблення" },
   { label: "Документи", value: "У наявності, готові до угоди" },
-  {
-    label: "Ціна",
-    value: (
-      <>
-        $100 000 <span className={styles.note}>· договірна</span>
-      </>
-    ),
-  },
 ];
 
 export default function Facts() {

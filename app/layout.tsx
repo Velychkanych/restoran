@@ -101,6 +101,7 @@ export default function RootLayout({
     <html
       lang="uk"
       className={`${unbounded.variable} ${manrope.variable}`}
+      suppressHydrationWarning
     >
       <head>
         {/* Schema.org: структуровані дані для Google */}

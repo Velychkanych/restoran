@@ -1,11 +1,37 @@
+"use client";
+
+import { useRef } from "react";
 import Counter from "@/components/effects/Counter";
 import HeroTitle from "@/components/effects/HeroTitle";
+import { useRafScroll } from "@/hooks/useRafScroll";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
+  const heroRef = useRef<HTMLElement>(null);
+  const slidesRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
+
+  // Паралакс при скролі: фон заглиблюється, контент підіймається і тане.
+  useRafScroll((y) => {
+    const hero = heroRef.current;
+    const slides = slidesRef.current;
+    const inner = innerRef.current;
+    if (!hero || !slides || !inner) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const h = hero.offsetHeight || window.innerHeight;
+    const p = Math.min(Math.max(y / h, 0), 1); // 0 → 1 поки гортаємо hero
+
+    // фон їде повільніше за скрол і трохи наближається
+    slides.style.transform = `translate3d(0, ${y * 0.4}px, 0) scale(${1 + p * 0.12})`;
+    // контент підіймається швидше й м'яко зникає
+    inner.style.transform = `translate3d(0, ${-y * 0.18}px, 0)`;
+    inner.style.opacity = String(Math.max(1 - p * 1.25, 0));
+  });
+
   return (
-    <header className={styles.hero} id="top">
-      <div className={styles.slides}>
+    <header className={styles.hero} id="top" ref={heroRef}>
+      <div className={styles.slides} ref={slidesRef}>
         <div className={styles.slide} />
         <div className={styles.slide} />
         <div className={styles.slide} />
@@ -13,7 +39,7 @@ export default function Hero() {
       </div>
       <div className={styles.overlay} />
 
-      <div className={styles.inner}>
+      <div className={styles.inner} ref={innerRef}>
         <div className={styles.eyebrow}>
           Закарпаття · Хустський район · з 2008
         </div>
