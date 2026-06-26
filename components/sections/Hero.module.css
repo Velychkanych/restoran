@@ -10,15 +10,8 @@
 
 .slides {
   position: absolute;
-  /* запас зверху/знизу, щоб паралакс не оголював краї */
-  inset: -12% 0;
-  height: 124%;
+  inset: 0;
   z-index: 0;
-  will-change: transform;
-}
-
-.inner {
-  will-change: transform, opacity;
 }
 
 .slide {
